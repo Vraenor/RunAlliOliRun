@@ -15,7 +15,7 @@ public class NauMov : MonoBehaviour {
     private float rotationVelocity;
     private float groundAngleVelocity;
 
-    Rigidbody rigidbody;
+    new Rigidbody rigidbody;
 
     private void Awake()
     {
@@ -46,17 +46,26 @@ public class NauMov : MonoBehaviour {
             rigidbody.drag = 0;
         }
 
-
-        // You can turn in the air on the ground
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            rigidbody.angularDrag = 0;
+        }
+        else
+        {
+            rigidbody.angularDrag = 0.8f;
+        }
+        
+        // You can turn in the air or the ground
         Vector3 turnTorque = Vector3.up * rotationRate * Input.GetAxis("Horizontal");
 
         // Correct force for deltatime and vehicle mass
-        turnTorque = turnTorque * Time.deltaTime * rigidbody.mass;
+        turnTorque = turnTorque * Time.deltaTime; // * rigidbody.mass;
         rigidbody.AddTorque(turnTorque);
 
-        // Fake rotate the car when you are turning
+        /*
+       // Fake rotate the car when you are turning
         Vector3 newRotation = transform.eulerAngles;
         newRotation.z = Mathf.SmoothDampAngle(newRotation.z, Input.GetAxis("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
-        transform.eulerAngles = newRotation;
+        transform.eulerAngles = newRotation;*/
 	}
 }
