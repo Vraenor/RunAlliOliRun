@@ -52,7 +52,7 @@ public class NauMov : MonoBehaviour {
         }
         else
         {
-            rigidbody.angularDrag = 0.8f;
+            rigidbody.angularDrag = 1.8f;
         }
         
         // You can turn in the air or the ground
