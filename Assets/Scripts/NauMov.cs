@@ -15,6 +15,8 @@ public class NauMov : MonoBehaviour {
     private float rotationVelocity;
     private float groundAngleVelocity;
 
+    public float angularAux;
+
     new Rigidbody rigidbody;
 
     private void Awake()
@@ -52,7 +54,7 @@ public class NauMov : MonoBehaviour {
         }
         else
         {
-            rigidbody.angularDrag = 1.8f;
+            rigidbody.angularDrag = angularAux;
         }
         
         // You can turn in the air or the ground
