@@ -4,27 +4,26 @@ using System.Collections;
 public class WaypointTrigger : MonoBehaviour {
 
     public GameObject enemy;
-    IAMov ia;
+    public IAMov ia;
 
     // Use this for initialization
     void Awake () {
 
         enemy = GameObject.FindGameObjectWithTag("Enemy");
-
+        ia = enemy.GetComponent<IAMov>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
     }
 
-    void onTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-
-        if (other.gameObject == enemy)
+        if (other.gameObject.tag == "Enemy")
         {
-            ia = enemy.GetComponent<IAMov>();
-            ia.wayPointIndex++;
+            Debug.Log("entra en el trigger");
+            other.GetComponent<IAMov>().wayPointIndex++;
+            
         }
     }
 }

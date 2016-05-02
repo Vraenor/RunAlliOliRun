@@ -28,7 +28,11 @@ public class IAMov : MonoBehaviour {
 
         if (functionState == 1) Slow();
 
-        if (wayPointIndex >= waypoints.Length) wayPointIndex = 0;
+        if (wayPointIndex >= waypoints.Length)
+        {
+            Debug.Log("hola");
+            wayPointIndex = 0;
+        }
         waypoint = waypoints[wayPointIndex];
  
     }
