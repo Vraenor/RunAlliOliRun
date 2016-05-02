@@ -6,7 +6,7 @@ using System.Collections.Generic;
 //This script has to be put in the image of the background
 
 public class LoadingScreen : MonoBehaviour {
-
+    /*
 	public GameObject Loading;
 	public List<Sprite> LoadingScreens;
 
@@ -65,5 +65,5 @@ public class LoadingScreen : MonoBehaviour {
 				Application.LoadLevel (11);
 			}
 		}
-	}
+	}*/
 }

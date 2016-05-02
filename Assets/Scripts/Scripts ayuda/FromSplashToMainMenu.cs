@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class FromSplashToMainMenu : MonoBehaviour {
-
+    /*
 	//Transition from Splash to Main menu automatically, putting a Fade In and a Fade out
 	// Use this for initialization
 	void Start () {
@@ -23,5 +23,5 @@ public class FromSplashToMainMenu : MonoBehaviour {
 		this.GetComponent<FadeMaterials> ().FadeOut ();
 		yield return new WaitForSeconds (3f);
 		Application.LoadLevel ("MainMenu");
-	}
+	}*/
 }

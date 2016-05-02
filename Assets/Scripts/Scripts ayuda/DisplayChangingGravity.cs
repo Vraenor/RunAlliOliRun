@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class DisplayChangingGravity : MonoBehaviour 
 {		
-	private bool inverseGravityDisplayed = false;
+	/*private bool inverseGravityDisplayed = false;
 	private bool normalGravityDisplayed = false;
 
 	//Controlamos el texto de cambiar la gravedad
@@ -104,5 +104,5 @@ public class DisplayChangingGravity : MonoBehaviour
 			gravityController.enabled = false;
 			
 			ChangeGravityText.enabled = false;
-		}
+		}*/
 }

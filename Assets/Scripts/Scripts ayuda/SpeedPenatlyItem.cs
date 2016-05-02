@@ -5,7 +5,7 @@ using System.Collections;
 /// Simple speed penalty item that also spins the vehicle around
 
 public class SpeedPenatlyItem : PickupItemBase 
-{
+{/*
 	protected override void OnPickupCollected(KartController kart)
 	{
 
@@ -17,5 +17,5 @@ public class SpeedPenatlyItem : PickupItemBase
 		kart.SpeedPenalty();
 		kart.Spin(2.0f);
 		Destroy (this);
-	}
+	}*/
 }

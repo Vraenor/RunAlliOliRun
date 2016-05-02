@@ -3,7 +3,7 @@ using System.Collections;
 
 
 public abstract class PickupItemBase : MonoBehaviour 
-{
+{/*
 	protected abstract void OnPickupCollected(KartController kart);
 
 
@@ -40,5 +40,5 @@ public abstract class PickupItemBase : MonoBehaviour
 		// always face the camera
 		Camera cam = Camera.main;
 		transform.LookAt(transform.position + cam.transform.rotation * Vector3.back, cam.transform.rotation * Vector3.up);
-	}
+	}*/
 }

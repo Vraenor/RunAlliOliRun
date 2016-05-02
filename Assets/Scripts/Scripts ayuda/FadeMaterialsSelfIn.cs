@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class FadeMaterialsSelfIn : MonoBehaviour {
-
+    /*
 	// Use this for initialization
 	void Start () {
 		//This script always has to be attached with a FadeMaterials
@@ -14,5 +14,5 @@ public class FadeMaterialsSelfIn : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	}
+	}*/
 }

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MainMenuScript : MonoBehaviour {
-
+    /*
 	public GameObject cursor;
 	public GameObject StartObject;
 	public GameObject courseModeObject;
@@ -165,5 +165,5 @@ public class MainMenuScript : MonoBehaviour {
 
 		//Dont destroy the background music
 		DontDestroyOnLoad (music);
-	}
+	}*/
 }

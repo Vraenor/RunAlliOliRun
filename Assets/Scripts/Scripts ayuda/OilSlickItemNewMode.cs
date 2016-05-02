@@ -3,7 +3,7 @@ using System.Collections;
 
 
 public class OilSlickItemNewMode : PickupItemBase 
-{
+{/*
 	protected override void OnPickupCollected(KartController kart)
 	{
 		//In the Player's AudioSource put the effect sounds
@@ -17,5 +17,5 @@ public class OilSlickItemNewMode : PickupItemBase
 		kart.SpeedPenalty(0.25f, 1.0f, 1.0f);
 		kart.Wiggle(1.0f);
 		Destroy (this);
-	}
+	}*/
 }

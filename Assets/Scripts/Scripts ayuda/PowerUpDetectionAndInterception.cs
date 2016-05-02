@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PowerUpDetectionAndInterception : MonoBehaviour {
-
+    /*
 	private Collider interceptorCollider;
 	private GameObject kartParent;
 	private ExampleAIControllerNewMode AIScript;
@@ -72,5 +72,5 @@ public class PowerUpDetectionAndInterception : MonoBehaviour {
 			kartParent.GetComponent<KartControllerNewMode>().Wiggle(1.0f);
 			break;
 		}
-	}
+	}*/
 }

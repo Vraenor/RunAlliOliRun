@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class FadeMaterials : MonoBehaviour {
-
+    /*
 
 	//Functions to Fade In and Out
 	//May be useful change the "time" value
@@ -43,6 +43,6 @@ public class FadeMaterials : MonoBehaviour {
 			
 				
 			}
-			
+			*/
 		
 }

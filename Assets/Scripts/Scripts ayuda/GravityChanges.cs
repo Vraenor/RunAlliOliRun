@@ -3,7 +3,7 @@ using System.Collections;
 
 
 public class GravityChanges : MonoBehaviour 
-{
+{/*
 
 	Camera camera;
 	
@@ -28,7 +28,7 @@ public class GravityChanges : MonoBehaviour
 	// Set it to false again because we dont want to affect all other cammeras.
 	void OnPostRender() {
 		GL.SetRevertBackfacing(false);
-	}
+	}*/
 }
 
 

@@ -13,7 +13,7 @@ public class ChangeMaterialColorNewMode : MonoBehaviour
 	
 	void Start()
 	{
-		gameObject.renderer.material = colorInicial;
+		//gameObject.renderer.material = colorInicial;
 	}
 	
 	void Update()
