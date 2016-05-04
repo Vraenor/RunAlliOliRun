@@ -7,12 +7,11 @@ public class ThrusterMan : MonoBehaviour {
     public float thrusterDistance;
     public Transform[] thrusters;
 
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-
     }
 
 	void FixedUpdate () {
@@ -21,12 +20,18 @@ public class ThrusterMan : MonoBehaviour {
 
         foreach (Transform thruster in thrusters)
         {
-
             Vector3 downwardForce;
             float distancePercentage;
-
-            if (Physics.Raycast (thruster.position, thruster.up * -1, out hit, thrusterDistance))
+            Vector3 aux = thruster.up * -1;
+            Debug.DrawRay(thruster.position, aux, Color.green);
+            if (Physics.Raycast(thruster.position, thruster.up * -1, out hit, thrusterDistance))
             {
+                if (aux.magnitude >= 10)
+                {
+                    GetComponentInParent<Transform>().rotation.eulerAngles.Set(0, 160, 0);
+                    Debug.DrawRay(thruster.position, aux, Color.red);
+                }
+
                 // The thruster within thrusterDistance to the ground
                 distancePercentage = 1 - (hit.distance / thrusterDistance);
 
