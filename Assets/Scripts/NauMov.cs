@@ -6,6 +6,7 @@ public class NauMov : MonoBehaviour {
     // Values that control the vehicle
     public float acceleration;
     public float rotationRate;
+    public Vector3 forwardForce;
 
     // Values for taking a nice turn display
     public float turnRotationAngle;
@@ -32,7 +33,7 @@ public class NauMov : MonoBehaviour {
             rigidbody.drag = 1;
 
             // Calculate forward force
-            Vector3 forwardForce = transform.forward * acceleration * Input.GetAxis("Vertical");
+             forwardForce = transform.forward * acceleration * Input.GetAxis("Vertical");
 
             // Correct the force for the deltatime and vehicle mass
             forwardForce = forwardForce * Time.deltaTime * rigidbody.mass;
