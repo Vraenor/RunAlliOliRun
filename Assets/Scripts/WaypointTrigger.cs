@@ -21,7 +21,7 @@ public class WaypointTrigger : MonoBehaviour {
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Debug.Log("entra en el trigger");
+            
             other.GetComponent<IAMov>().wayPointIndex++;
             
         }
