@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
     public Text m_MessageText;
     public IaManager[] m_Pods;
     public GameObject[] m_PodPrefab;
-    [HideInInspector] public GameObject[] waypoints;
+    public GameObject[] waypoints;
 
 
     private int m_LapNumber;
