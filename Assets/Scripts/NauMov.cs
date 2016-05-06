@@ -69,4 +69,10 @@ public class NauMov : MonoBehaviour {
         newRotation.z = Mathf.SmoothDampAngle(newRotation.z, Input.GetAxis("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
         transform.eulerAngles = newRotation;*/
 	}
+
+    /*public void volcado(Transform trans)
+    {
+        GetComponentInParent<Transform>().position = trans.position;
+    }*/
+
 }

@@ -11,7 +11,8 @@ public class IAMov : MonoBehaviour {
     public GameObject[] waypoints;
     public int wayPointIndex = 0;
     int functionState;
-    bool acceState, slowState, smoothRotation = true;
+
+    bool acceState, slowState, smoothRotation = true, volcado;
 
 
     private void Awake()
@@ -28,10 +29,8 @@ public class IAMov : MonoBehaviour {
 
         if (functionState == 1) Slow();
 
-        if (wayPointIndex >= waypoints.Length)
-        {
-            wayPointIndex = 0;
-        }
+        if (wayPointIndex >= waypoints.Length) wayPointIndex = 0;
+
         waypoint = waypoints[wayPointIndex];
  
     }

@@ -19,11 +19,22 @@ public class WaypointTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag.Equals("Enemy"))
         {
-            
-            other.GetComponent<IAMov>().wayPointIndex++;
-            
+            string name = this.name;
+            name = name.Remove(0, 8);
+            int aux = int.Parse(name);
+
+            other.GetComponent<IAMov>().wayPointIndex = aux;
         }
+
+        /*if (other.gameObject.tag.Equals("Player"))
+        {
+            string name = this.name;
+            name = name.Remove(0, 8);
+            int aux = int.Parse(name);
+
+            other.GetComponent<NauMov>().volcado(gameObject.transform);
+        }*/
     }
 }
