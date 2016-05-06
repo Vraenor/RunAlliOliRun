@@ -22,7 +22,7 @@ public class Antivuelco : MonoBehaviour {
     {
         if (other.gameObject.tag.Equals("Terrain"))
         {
-            nave.GetComponentInParent<Transform>().position = ia.waypoints[ia.wayPointIndex - 1].transform.position;
+            //nave.GetComponentInParent<Transform>().position = ia.waypoints[ia.wayPointIndex - 1].transform.position;
         }
 
     }
