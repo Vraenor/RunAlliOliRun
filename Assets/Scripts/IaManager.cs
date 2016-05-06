@@ -11,22 +11,22 @@ public class IaManager {
     [HideInInspector] public string m_ColoredPlayerText;
     [HideInInspector] public GameObject m_Instance;
     [HideInInspector] public int m_Wins;
+    [HideInInspector] public GameObject[] waypoints;
 
 
-   /* private TankMovement m_Movement;
-    private TankShooting m_Shooting;*/
+    private IAMov m_Movement;
     private GameObject m_CanvasGameObject;
 
 
     public void Setup()
     {
-       /* m_Movement = m_Instance.GetComponent<TankMovement>();
-        m_Shooting = m_Instance.GetComponent<TankShooting>();
+        m_Movement = m_Instance.GetComponent<IAMov>();
+        /* m_Shooting = m_Instance.GetComponent<TankShooting>();
         m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas>().gameObject;
 
         m_Movement.m_PlayerNumber = m_PlayerNumber;
         m_Shooting.m_PlayerNumber = m_PlayerNumber;*/
-
+        m_Movement.waypoints = waypoints;
         m_ColoredPlayerText = "<color=#" + ColorUtility.ToHtmlStringRGB(m_PlayerColor) + ">PLAYER " + m_PlayerNumber + "</color>";
 
         MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();

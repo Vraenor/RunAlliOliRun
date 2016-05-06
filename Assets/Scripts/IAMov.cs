@@ -12,23 +12,12 @@ public class IAMov : MonoBehaviour {
     public int wayPointIndex = 0;
     int functionState;
     bool acceState, slowState, smoothRotation = true;
-    
+
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         functionState = 0;
-
-        waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
-        GameObject[] aux = waypoints;
-
-        /*for (int i = 0; i <= waypoints.Length; i++)
-        {
-            string name = waypoints[i].name;
-            name = name.Remove(0, 8);
-            aux[int.Parse(name) - 1] = waypoints[i];
-        }
-        waypoints = aux;*/
     }
 
     // Update is called once per frame

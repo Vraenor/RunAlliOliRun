@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public Text m_MessageText;
     public IaManager[] m_Pods;
     public GameObject[] m_PodPrefab;
+    [HideInInspector] public GameObject[] waypoints;
 
 
     private int m_LapNumber;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour {
             m_Pods[i].m_Instance =
                 Instantiate(m_PodPrefab[i], m_Pods[i].m_SpawnPoint.position, m_Pods[i].m_SpawnPoint.rotation) as GameObject;
             m_Pods[i].m_PlayerNumber = i + 1;
+            m_Pods[i].waypoints = waypoints;
             m_Pods[i].Setup();
         }
     }
