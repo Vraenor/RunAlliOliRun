@@ -5,7 +5,7 @@ public class IAMov : MonoBehaviour {
 
     new Rigidbody rigidbody;
 
-    float accel = 0.8f, inertia = 0.9f, speedLimit = 10.0f, minSpeed = 1.0f, stopTime = 1.0f, rotationDamping = 0.6f;
+    float accel = 0.3f, inertia = 0.9f, speedLimit = 8.0f, minSpeed = 1.0f, stopTime = 1.0f, rotationDamping = 0.6f;
     private float currentSpeed = 0.0f;
     public GameObject waypoint;
     public GameObject[] waypoints;

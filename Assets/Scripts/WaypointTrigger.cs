@@ -3,14 +3,9 @@ using System.Collections;
 
 public class WaypointTrigger : MonoBehaviour {
 
-    public GameObject enemy;
-    public IAMov ia;
-
     // Use this for initialization
     void Awake () {
 
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
-        ia = enemy.GetComponent<IAMov>();
 	}
 	
 	// Update is called once per frame
@@ -28,13 +23,17 @@ public class WaypointTrigger : MonoBehaviour {
             other.GetComponent<IAMov>().wayPointIndex = aux;
         }
 
-        /*if (other.gameObject.tag.Equals("Player"))
+        if (other.gameObject.tag.Equals("Player"))
         {
             string name = this.name;
             name = name.Remove(0, 8);
             int aux = int.Parse(name);
 
-            other.GetComponent<NauMov>().volcado(gameObject.transform);
-        }*/
+            other.GetComponent<NauMov>().wPos = GetComponentInParent<Transform>().position;
+            other.GetComponent<NauMov>().wRot = GetComponentInParent<Transform>().rotation;
+            other.GetComponent<NauMov>().wRot.y = GetComponentInParent<Transform>().rotation.y+180f;
+
+
+        }
     }
 }

@@ -18,14 +18,22 @@ public class NauMov : MonoBehaviour {
 
     new Rigidbody rigidbody;
 
+    float dot;
+    public Vector3 wPos;
+    public Quaternion wRot;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-
+        wPos.Set(413f, 10f, 397f);
     }
 
     void FixedUpdate () {
-	
+
+        dot = Vector3.Dot(transform.up, Vector3.up);
+
+        if (dot < 0) volcado();
+
         //Check if we are touching the ground
         if (Physics.Raycast (transform.position, transform.up * -1, 3f)) {
 
@@ -53,7 +61,7 @@ public class NauMov : MonoBehaviour {
         }
         else
         {
-            rigidbody.angularDrag = 1f;
+            rigidbody.angularDrag = 1.3f;
         }
         
         // You can turn in the air or the ground
@@ -70,9 +78,11 @@ public class NauMov : MonoBehaviour {
         transform.eulerAngles = newRotation;*/
 	}
 
-    public void volcado(Transform trans)
+    public void volcado()
     {
-        GetComponentInParent<Transform>().position = trans.position;
-    }
+        GetComponentInParent<Transform>().rotation = wRot;
+        GetComponentInParent<Transform>().position = wPos;
+        //yield return new WaitForSeconds(3);
 
+    }
 }
