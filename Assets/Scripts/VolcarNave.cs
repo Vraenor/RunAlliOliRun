@@ -32,7 +32,6 @@ public class VolcarNave : MonoBehaviour
         if (other.gameObject.tag.Equals("Terrain"))
         {
             waypoint = GameObject.Find("Waypoint" + aux);
-            mov.volcado(waypoint.transform);
         }
     }
 }
