@@ -23,6 +23,7 @@ public class LapCounter : MonoBehaviour {
     }
     void FixedUpdate()
     {
+        lap = playerMovement.currentLap;
         switch (lap) {
            
             case 2:
@@ -39,11 +40,12 @@ public class LapCounter : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
+       // Debug.Log("ultimo waypoint  " + playerMovement.lastWP);
         if (other.gameObject.tag.Equals("Player"))
         {
-            if (lap == 0) { lap = 1; }
-            if (lap == 1) { lap = 2; }
-            if (lap == 2) { lap = 3; }
+            if (lap == 0 && playerMovement.lastWP == 120) { playerMovement.currentLap = 1; }
+            if (lap == 1 && playerMovement.lastWP == 120) { playerMovement.currentLap = 2; }
+            if (lap == 2 && playerMovement.lastWP == 120) { playerMovement.currentLap = 3; }
         }
     }
 }

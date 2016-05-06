@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
     public float m_StartDelay = 5f;
     public float m_EndDelay = 3f;
-    public Text m_MessageText;
     public IaManager[] m_Pods;
     public GameObject[] m_PodPrefab;
     public GameObject[] waypoints;

@@ -20,6 +20,7 @@ public class PosCounter : MonoBehaviour {
     }
     void FixedUpdate()
     {
+        pos = playerMovement.currentPos;
         switch (pos)
         {
             case 2:

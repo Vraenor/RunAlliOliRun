@@ -21,11 +21,16 @@ public class NauMov : MonoBehaviour {
     float dot;
     public Vector3 wPos;
     public Quaternion wRot;
+    public int currentPos;
+    public int currentLap;
+    public int lastWP;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         wPos.Set(413f, 10f, 397f);
+        currentLap = 1;
+        currentPos = 1;
     }
 
     void FixedUpdate () {
