@@ -22,7 +22,7 @@ public class IAMov : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         if (functionState == 0) Acce();
