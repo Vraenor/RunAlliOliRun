@@ -5,12 +5,12 @@ public class IAMov : MonoBehaviour {
 
     new Rigidbody rigidbody;
 
-    public float accel = 0.3f, inertia = 0.9f, speedLimit = 8.0f, minSpeed = 1.0f, stopTime = 1.0f, rotationDamping = 0.6f;
+    public float accel = 0.3f, inertia = 0.9f, speedLimit = 5.0f, minSpeed = 1.0f, stopTime = 1.0f, rotationDamping = 1.0f;
     private float currentSpeed = 0.0f;
     public GameObject waypoint;
     public GameObject[] waypoints;
     public int wayPointIndex = 0;
-    int functionState;
+    public int functionState;
 
     bool acceState, slowState, smoothRotation = true, volcado;
 
@@ -74,9 +74,8 @@ public class IAMov : MonoBehaviour {
 
         if (currentSpeed <= minSpeed)
         {
-            currentSpeed = 0.0f;
+            currentSpeed = minSpeed;
             functionState = 0;
-
         }
     }
 }
