@@ -35,9 +35,9 @@ public class NauMov : MonoBehaviour {
 
     void FixedUpdate () {
 
-        //dot = Vector3.Dot(transform.up, Vector3.up);
+        dot = Vector3.Dot(transform.up, Vector3.up);
 
-        //if (dot < 0) StartCoroutine(Example());
+        if (dot < 0) StartCoroutine(Example());
 
         //Check if we are touching the ground
         if (Physics.Raycast (transform.position, transform.up * -1, 3f)) {
@@ -62,7 +62,7 @@ public class NauMov : MonoBehaviour {
 
         if (Input.GetAxis("Horizontal") == 0)
         {
-            rigidbody.angularDrag = 0.8f;
+            rigidbody.angularDrag = 1.5f;
 
         }
         else
