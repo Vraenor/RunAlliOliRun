@@ -7,6 +7,10 @@ public class NauMov : MonoBehaviour {
     public float acceleration;
     public float rotationRate;
     public Vector3 forwardForce;
+    //audio of the engine 
+    public AudioSource movementAudio;
+    public AudioClip forward;
+    public AudioClip stop;
 
     // Values for taking a nice turn display
     public float turnRotationAngle;
@@ -76,13 +80,31 @@ public class NauMov : MonoBehaviour {
         // Correct force for deltatime and vehicle mass
         turnTorque = turnTorque * Time.deltaTime * rigidbody.mass;
         rigidbody.AddTorque(turnTorque);
-
-        
-       // Fake rotate the car when you are turning
-        /*Vector3 newRotation = transform.eulerAngles;
-        newRotation.z = Mathf.SmoothDampAngle(newRotation.z, Input.GetAxis("Horizontal") * -turnRotationAngle, ref rotationVelocity, turnRotationSeekSpeed);
-        transform.eulerAngles = newRotation;*/
+        EngineAudio();
 	}
+
+    public void EngineAudio() {
+       if(forwardForce.x != 0 )
+        {
+            if (movementAudio.clip == stop) {
+                movementAudio.clip = forward;
+                Debug.Log("eooooo");
+                movementAudio.Play();
+                movementAudio.loop = true;
+            }
+        }
+        else
+        {
+            if (movementAudio.clip == forward)
+            {
+                movementAudio.loop = false;
+                movementAudio.clip = stop;
+                movementAudio.Play();
+            }
+            Debug.Log("WOLOLO");
+        }
+
+    }
 
     public void volcado()
     {
