@@ -35,9 +35,9 @@ public class NauMov : MonoBehaviour {
 
     void FixedUpdate () {
 
-        dot = Vector3.Dot(transform.up, Vector3.up);
+        //dot = Vector3.Dot(transform.up, Vector3.up);
 
-        if (dot < 0) volcado();
+        //if (dot < 0) StartCoroutine(Example());
 
         //Check if we are touching the ground
         if (Physics.Raycast (transform.position, transform.up * -1, 3f)) {
@@ -62,11 +62,12 @@ public class NauMov : MonoBehaviour {
 
         if (Input.GetAxis("Horizontal") == 0)
         {
-            rigidbody.angularDrag = 0;
+            rigidbody.angularDrag = 0.8f;
+
         }
         else
         {
-            rigidbody.angularDrag = 1.3f;
+            rigidbody.angularDrag = 0;
         }
         
         // You can turn in the air or the ground
@@ -87,7 +88,12 @@ public class NauMov : MonoBehaviour {
     {
         GetComponentInParent<Transform>().rotation = wRot;
         GetComponentInParent<Transform>().position = wPos;
-        //yield return new WaitForSeconds(3);
 
+    }
+
+    IEnumerator Example()
+    {
+        yield return new WaitForSeconds(1.5f);
+        volcado();
     }
 }

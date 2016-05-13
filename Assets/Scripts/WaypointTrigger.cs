@@ -168,11 +168,24 @@ public class WaypointTrigger : MonoBehaviour {
             if ((aux == other.GetComponent<NauMov>().lastWP+1) || (aux ==1 && other.GetComponent<NauMov>().lastWP == 134))
             {
                 other.GetComponent<NauMov>().wPos = GetComponentInParent<Transform>().position;
+                other.GetComponent<NauMov>().wPos.y = GetComponentInParent<Transform>().position.y + 1;
                 other.GetComponent<NauMov>().wRot = GetComponentInParent<Transform>().rotation;
                 other.GetComponent<NauMov>().wRot.y = GetComponentInParent<Transform>().rotation.y + 180f;
                 other.GetComponent<NauMov>().lastWP = aux;
             }
             
+        }
+
+        if (other.gameObject.tag.Equals("Enemy"))
+        {
+            if ((aux == other.GetComponent<IAMov>().lastWP + 1) || (aux == 1 && other.GetComponent<IAMov>().lastWP == 134))
+            {
+                other.GetComponent<IAMov>().wPos = GetComponentInParent<Transform>().position;
+                other.GetComponent<IAMov>().wRot = GetComponentInParent<Transform>().rotation;
+                other.GetComponent<IAMov>().wRot.y = GetComponentInParent<Transform>().rotation.y + 180f;
+                other.GetComponent<IAMov>().lastWP = aux;
+            }
+
         }
     }
 }

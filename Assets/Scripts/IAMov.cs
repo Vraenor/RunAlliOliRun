@@ -5,25 +5,34 @@ public class IAMov : MonoBehaviour {
 
     new Rigidbody rigidbody;
 
-    public float accel = 0.3f, inertia = 0.9f, speedLimit = 5.0f, minSpeed = 1.0f, stopTime = 1.0f, rotationDamping = 1.0f;
-    private float currentSpeed = 0.0f;
+    public float accel = 0.3f, inertia = 0.9f, speedLimit = 5.0f, minSpeed = 3.0f, stopTime = 1.0f, rotationDamping = 0.9f;
+    public float currentSpeed = 0.0f;
     public GameObject waypoint;
     public GameObject[] waypoints;
     public int wayPointIndex = 0;
     public int functionState;
 
-    bool acceState, slowState, smoothRotation = true, volcado;
+    bool acceState, slowState, smoothRotation = true;
 
+    public int lastWP;
+    public Vector3 wPos;
+    public Quaternion wRot;
+    float dot;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        wPos.Set(407f, 10f, 396f);
         functionState = 0;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
+                dot = Vector3.Dot(transform.up, Vector3.up);
+
+        if (dot < 0) volcado();
 
         if (functionState == 0) Acce();
 
@@ -77,5 +86,18 @@ public class IAMov : MonoBehaviour {
             currentSpeed = minSpeed;
             functionState = 0;
         }
+    }
+
+    public void volcado()
+    {
+        StartCoroutine(Example());
+        GetComponentInParent<Transform>().rotation = wRot;
+        GetComponentInParent<Transform>().position = wPos;
+    }
+
+    IEnumerator Example()
+    {
+        yield return new WaitForSeconds(5f);
+
     }
 }
