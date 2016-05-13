@@ -7,13 +7,17 @@ public class Camera : MonoBehaviour {
     public float distanceUp;
     public float distanceBack;
     public float minimumHeight;
+    private GameObject player;
 
     // Not used directly
     private Vector3 positionVelocity;
 
-	// Posiblemente hacer el GetComponent<Transform>();
-
-	void FixedUpdate () {
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        target = player.GetComponent<Transform>();
+    }
+    void FixedUpdate () {
 
         // Calculate a new position to place the camera
         Vector3 newPosition = target.position + (target.forward * distanceBack);
