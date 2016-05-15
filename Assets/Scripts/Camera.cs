@@ -14,21 +14,26 @@ public class Camera : MonoBehaviour {
 
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        target = player.GetComponent<Transform>();
+       /*player = GameObject.FindGameObjectWithTag("Player");
+        target = player.GetComponent<Transform>();*/
     }
     void FixedUpdate () {
+        if (player != null)
+        {
+            // Calculate a new position to place the camera
+            Vector3 newPosition = target.position + (target.forward * distanceBack);
+            newPosition.y = Mathf.Max(newPosition.y + distanceUp, minimumHeight);
 
-        // Calculate a new position to place the camera
-        Vector3 newPosition = target.position + (target.forward * distanceBack);
-        newPosition.y = Mathf.Max(newPosition.y + distanceUp, minimumHeight);
+            // Move the camera
+            transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref positionVelocity, 0.18f);
 
-        // Move the camera
-        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref positionVelocity, 0.18f);
-
-        // Rotate the camera to look at where the car is pointing
-        Vector3 focalPoint = target.position + (target.forward * 5);
-        transform.LookAt(focalPoint);
-	
+            // Rotate the camera to look at where the car is pointing
+            Vector3 focalPoint = target.position + (target.forward * 5);
+            transform.LookAt(focalPoint);
+        }
+        else {
+            player = GameObject.FindGameObjectWithTag("Player");
+            target = player.GetComponent<Transform>();
+        }
 	}
 }

@@ -167,10 +167,7 @@ public class WaypointTrigger : MonoBehaviour {
         {
             if ((aux == other.GetComponent<NauMov>().lastWP+1) || (aux ==1 && other.GetComponent<NauMov>().lastWP == 134))
             {
-                other.GetComponent<NauMov>().wPos = GetComponentInParent<Transform>().position;
-                other.GetComponent<NauMov>().wPos.y = GetComponentInParent<Transform>().position.y + 1;
-                other.GetComponent<NauMov>().wRot = GetComponentInParent<Transform>().rotation;
-                other.GetComponent<NauMov>().wRot.y = GetComponentInParent<Transform>().rotation.y + 180f;
+                other.GetComponent<NauMov>().lastWaypoint = gameObject;
                 other.GetComponent<NauMov>().lastWP = aux;
             }
             

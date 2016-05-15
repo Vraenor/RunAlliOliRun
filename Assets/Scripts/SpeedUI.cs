@@ -17,14 +17,21 @@ public class SpeedUI : MonoBehaviour {
 
     private void Awake()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        PlayerMov = Player.GetComponent<NauMov>();
+       /* Player = GameObject.FindGameObjectWithTag("Player");
+        PlayerMov = Player.GetComponent<NauMov>();*/
     }
 
 
     void FixedUpdate() {
-        CurrentSpeed = Mathf.Abs(PlayerMov.forwardForce.z);
-        SetSpeedUI();
+        if (Player != null)
+        {
+            CurrentSpeed = Mathf.Abs(PlayerMov.forwardForce.z);
+            SetSpeedUI();
+        }
+        else {
+            Player = GameObject.FindGameObjectWithTag("Player");
+            PlayerMov = Player.GetComponent<NauMov>();
+        }
     }
 
     private void SetSpeedUI()

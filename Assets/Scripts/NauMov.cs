@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class NauMov : MonoBehaviour {
@@ -23,26 +23,26 @@ public class NauMov : MonoBehaviour {
     new Rigidbody rigidbody;
 
     float dot;
-    public Vector3 wPos;
-    public Quaternion wRot;
     public int currentPos;
     public int currentLap;
     public int lastWP;
+    public GameObject lastWaypoint;
+
+    private bool respawn = false;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        wPos.Set(413f, 10f, 397f);
         currentLap = 1;
         currentPos = 1;
     }
 
     void FixedUpdate () {
 
-        //dot = Vector3.Dot(transform.up, Vector3.up);
+        dot = Vector3.Dot(transform.up, Vector3.up);
 
-        //if (dot < 0) StartCoroutine(Example());
-
+        if (dot < 0 && !respawn) StartCoroutine(Example());
+        
         //Check if we are touching the ground
         if (Physics.Raycast (transform.position, transform.up * -1, 3f)) {
 
@@ -88,7 +88,6 @@ public class NauMov : MonoBehaviour {
         {
             if (movementAudio.clip == stop) {
                 movementAudio.clip = forward;
-                Debug.Log("eooooo");
                 movementAudio.Play();
                 movementAudio.loop = true;
             }
@@ -101,20 +100,23 @@ public class NauMov : MonoBehaviour {
                 movementAudio.clip = stop;
                 movementAudio.Play();
             }
-            Debug.Log("WOLOLO");
         }
-
     }
 
     public void volcado()
     {
-        GetComponentInParent<Transform>().rotation = wRot;
-        GetComponentInParent<Transform>().position = wPos;
 
+        GameManager aux = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        aux.m_NumberofPlayers--;
+        aux.lastWaypoint = lastWaypoint;
+        aux.numberWaypoint = lastWP;
+        aux.m_LapNumber = currentLap;
+        Destroy(gameObject);
     }
 
     IEnumerator Example()
     {
+        respawn = true;
         yield return new WaitForSeconds(1.5f);
         volcado();
     }
