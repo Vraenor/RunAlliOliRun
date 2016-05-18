@@ -8,16 +8,11 @@ public class IaManager
     //apariencia de la IA
     //public Color m_PlayerColor;
     public Transform m_SpawnPoint;
-<<<<<<< HEAD
+
     [HideInInspector]
     public GameObject m_Instance;
     [HideInInspector]
     public GameObject[] waypoints;
-=======
-    [HideInInspector] public GameObject m_Instance;
-    [HideInInspector] public GameObject[] waypoints;
-
->>>>>>> origin/master
 
     //referencais al movimiento y al canvas de la ia
     private IAMov m_Movement;
@@ -40,13 +35,9 @@ public class IaManager
 
     public void DisableControl()//desactivar movimiento
     {
-<<<<<<< HEAD
+
         m_Movement.enabled = false;
         m_CanvasGameObject.SetActive(false);
-=======
-       m_Movement.enabled = false;
-       m_CanvasGameObject.SetActive(false);
->>>>>>> origin/master
     }
 
 

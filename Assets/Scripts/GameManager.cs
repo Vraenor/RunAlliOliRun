@@ -4,13 +4,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 
-<<<<<<< HEAD
 public class GameManager : MonoBehaviour
 {
     //Variables para el inicio o fin de partida
-=======
-public class GameManager : MonoBehaviour {
->>>>>>> origin/master
+
     public float m_StartDelay = 5f;
     public float m_EndDelay = 3f;
     private WaitForSeconds m_StartWait;
@@ -18,27 +15,16 @@ public class GameManager : MonoBehaviour {
     //Manager de la IA y el jugador
     public IaManager[] m_Pods;
     public PlayerManager[] m_Player;
-<<<<<<< HEAD
+
     //Lista de naves y waypoints
     public GameObject[] m_PodPrefab;
     public GameObject[] waypoints;
     //Variables para el control de vuelta y el respawn de jugador
-=======
-    public GameObject[] m_PodPrefab;
-    public GameObject[] waypoints;
->>>>>>> origin/master
+
     public int m_NumberofPlayers = 0;
     public GameObject lastWaypoint;
     public int numberWaypoint = 0;
     public int m_LapNumber;
-<<<<<<< HEAD
-=======
-
-    private WaitForSeconds m_StartWait;
-    private WaitForSeconds m_EndWait;
-
-
->>>>>>> origin/master
 
     private void Start()
     {
@@ -47,11 +33,8 @@ public class GameManager : MonoBehaviour {
         SpawnAllPods();
         StartCoroutine(GameLoop());
     }
-<<<<<<< HEAD
-    //Metodo para generar las naves al inicio de la carrera
-=======
 
->>>>>>> origin/master
+    //Metodo para generar las naves al inicio de la carrera
     private void SpawnAllPods()
     {
         for (int i = 0; i < m_Pods.Length; i++)
@@ -63,27 +46,18 @@ public class GameManager : MonoBehaviour {
         }
         for (int i = 0; i < m_Player.Length; i++)
         {
-            m_Player[i].m_Instance =
-<<<<<<< HEAD
-                Instantiate(m_PodPrefab[i + 1], m_Player[i].m_SpawnPoint.position, m_Player[i].m_SpawnPoint.rotation) as GameObject;
-=======
-                Instantiate(m_PodPrefab[i+1], m_Player[i].m_SpawnPoint.position, m_Player[i].m_SpawnPoint.rotation) as GameObject;
->>>>>>> origin/master
+            m_Player[i].m_Instance = Instantiate(m_PodPrefab[i + 1], m_Player[i].m_SpawnPoint.position, m_Player[i].m_SpawnPoint.rotation) as GameObject;
+
             m_Player[i].Setup();
             m_NumberofPlayers++;
         }
     }
-<<<<<<< HEAD
+
     //Metodo que hace respawn al player
     public void RespawnPlayer(GameObject posicion, int waypoint)
     {
         if (m_NumberofPlayers == 0)
         {
-=======
-
-    public void RespawnPlayer(GameObject posicion, int waypoint) {
-        if (m_NumberofPlayers == 0){
->>>>>>> origin/master
             m_NumberofPlayers++;
             for (int i = 0; i < m_Player.Length; i++)
             {
@@ -97,11 +71,8 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
-<<<<<<< HEAD
-    //loop de juego
-=======
 
->>>>>>> origin/master
+    //loop de juego
     private IEnumerator GameLoop()
     {
         yield return StartCoroutine(RoundStarting());
@@ -117,11 +88,8 @@ public class GameManager : MonoBehaviour {
         DisablePodControl();
         yield return m_StartWait;
     }
-<<<<<<< HEAD
-    //desactivar controles
-=======
 
->>>>>>> origin/master
+    //desactivar controles
     private void DisablePodControl()
     {
         for (int i = 0; i < m_Pods.Length; i++)
@@ -133,11 +101,8 @@ public class GameManager : MonoBehaviour {
             m_Player[i].DisableControl();
         }
     }
-<<<<<<< HEAD
-    //reinicio de las naves
-=======
 
->>>>>>> origin/master
+    //reinicio de las naves
     private void ResetAllPods()
     {
         for (int i = 0; i < m_Pods.Length; i++)
@@ -149,22 +114,16 @@ public class GameManager : MonoBehaviour {
             m_Player[i].Reset();
         }
     }
-<<<<<<< HEAD
-    //mantener la ronda
-=======
 
->>>>>>> origin/master
+    //mantener la ronda
     private IEnumerator RoundPlaying()
     {
         EnablePodControl();
         while (m_LapNumber <= 3) { }
         yield return null;
     }
-<<<<<<< HEAD
-    //activar controles
-=======
 
->>>>>>> origin/master
+    //activar controles
     private void EnablePodControl()
     {
         for (int i = 0; i < m_Pods.Length; i++)
@@ -176,11 +135,8 @@ public class GameManager : MonoBehaviour {
             m_Player[i].EnableControl();
         }
     }
-<<<<<<< HEAD
-    //fin de ronda
-=======
 
->>>>>>> origin/master
+    //fin de ronda
     private IEnumerator RoundEnding()
     {
 
@@ -192,13 +148,10 @@ public class GameManager : MonoBehaviour {
         string message = "DRAW!";
         return message;
     }
-<<<<<<< HEAD
+
     //control si hay que hacerle respawn al player
     void FixedUpdate()
     {
-=======
-    void FixedUpdate() {
->>>>>>> origin/master
         if (m_NumberofPlayers < 1)
         {
             RespawnPlayer(lastWaypoint, numberWaypoint);

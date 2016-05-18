@@ -39,15 +39,12 @@ public class NauMov : MonoBehaviour {
 
     void FixedUpdate () {
 
-<<<<<<< HEAD
         dot = Vector3.Dot(transform.up, Vector3.up); //Calculo de la distancia de la parte superior de la nave con el suelo
 
         if (dot < 0 && !respawn) StartCoroutine(Example()); //Si la nave ha volcado, hacer el respawn
         
         //Codigo tutorial hovercar
-=======
         dot = Vector3.Dot(transform.up, Vector3.up);
->>>>>>> origin/master
 
         if (dot < 0 && !respawn) StartCoroutine(Example());
         
@@ -116,11 +113,7 @@ public class NauMov : MonoBehaviour {
 
         GameManager aux = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         aux.m_NumberofPlayers--;
-<<<<<<< HEAD
         aux.lastWaypoint = lastWaypoint; //ultimo waypoint por el que ha pasado, donde se creara la nueva nave
-=======
-        aux.lastWaypoint = lastWaypoint;
->>>>>>> origin/master
         aux.numberWaypoint = lastWP;
         aux.m_LapNumber = currentLap;
         Destroy(gameObject);

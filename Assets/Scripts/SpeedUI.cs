@@ -18,7 +18,6 @@ public class SpeedUI : MonoBehaviour
 
     private void Awake()
     {
-<<<<<<< HEAD
 
     }
 
@@ -26,15 +25,6 @@ public class SpeedUI : MonoBehaviour
     void FixedUpdate()
     {
         if (Player != null)//control si hay o no player
-=======
-       /* Player = GameObject.FindGameObjectWithTag("Player");
-        PlayerMov = Player.GetComponent<NauMov>();*/
-    }
-
-
-    void FixedUpdate() {
-        if (Player != null)
->>>>>>> origin/master
         {
             CurrentSpeed = Mathf.Abs(PlayerMov.forwardForce.z);
             SetSpeedUI();
