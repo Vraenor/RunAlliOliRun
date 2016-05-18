@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class NauMov : MonoBehaviour {
@@ -23,25 +23,27 @@ public class NauMov : MonoBehaviour {
     new Rigidbody rigidbody;
 
     float dot;
-    public Vector3 wPos;
-    public Quaternion wRot;
     public int currentPos;
     public int currentLap;
     public int lastWP;
+    public GameObject lastWaypoint;
+
+    private bool respawn = false;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        wPos.Set(413f, 10f, 397f);
         currentLap = 1;
         currentPos = 1;
     }
 
     void FixedUpdate () {
 
-        dot = Vector3.Dot(transform.up, Vector3.up);
+        dot = Vector3.Dot(transform.up, Vector3.up); //Calculo de la distancia de la parte superior de la nave con el suelo
 
-        if (dot < 0) StartCoroutine(Example());
+        if (dot < 0 && !respawn) StartCoroutine(Example()); //Si la nave ha volcado, hacer el respawn
+        
+        //Codigo tutorial hovercar
 
         //Check if we are touching the ground
         if (Physics.Raycast (transform.position, transform.up * -1, 3f)) {
@@ -64,12 +66,12 @@ public class NauMov : MonoBehaviour {
             rigidbody.drag = 0;
         }
 
-        if (Input.GetAxis("Horizontal") == 0)
+        if (Input.GetAxis("Horizontal") == 0) //Si no se esta pulsando las teclas de rotacion, se aumenta el anguladrag para que decrezca la velocidad de rotacion hasta que para
         {
-            rigidbody.angularDrag = 1.5f;
+            rigidbody.angularDrag = 0.8f;
 
         }
-        else
+        else //Mantiene el anguladrag a 0 para que la nave siga girando mientras haya input por parte del jugador
         {
             rigidbody.angularDrag = 0;
         }
@@ -80,15 +82,14 @@ public class NauMov : MonoBehaviour {
         // Correct force for deltatime and vehicle mass
         turnTorque = turnTorque * Time.deltaTime * rigidbody.mass;
         rigidbody.AddTorque(turnTorque);
-        EngineAudio();
+        EngineAudio(); //Llamada al audio
 	}
 
-    public void EngineAudio() {
+    public void EngineAudio() { //Audio dependiendo de si hay fuerza hacia delante o no
        if(forwardForce.x != 0 )
         {
             if (movementAudio.clip == stop) {
                 movementAudio.clip = forward;
-                Debug.Log("eooooo");
                 movementAudio.Play();
                 movementAudio.loop = true;
             }
@@ -101,20 +102,23 @@ public class NauMov : MonoBehaviour {
                 movementAudio.clip = stop;
                 movementAudio.Play();
             }
-            Debug.Log("WOLOLO");
         }
-
     }
 
-    public void volcado()
+    public void volcado() //Eliminacion de la nave volcada y respawn de una nueva
     {
-        GetComponentInParent<Transform>().rotation = wRot;
-        GetComponentInParent<Transform>().position = wPos;
 
+        GameManager aux = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        aux.m_NumberofPlayers--;
+        aux.lastWaypoint = lastWaypoint; //ultimo waypoint por el que ha pasado, donde se creara la nueva nave
+        aux.numberWaypoint = lastWP;
+        aux.m_LapNumber = currentLap;
+        Destroy(gameObject);
     }
 
     IEnumerator Example()
     {
+        respawn = true;
         yield return new WaitForSeconds(1.5f);
         volcado();
     }

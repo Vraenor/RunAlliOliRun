@@ -3,60 +3,50 @@ using UnityEngine;
 
 
 [Serializable]
-public class IaManager {
-
-    public Color m_PlayerColor;
+public class IaManager
+{
+    //apariencia de la IA
+    //public Color m_PlayerColor;
     public Transform m_SpawnPoint;
-    [HideInInspector] public int m_PlayerNumber;
-    [HideInInspector] public string m_ColoredPlayerText;
-    [HideInInspector] public GameObject m_Instance;
-    [HideInInspector] public int m_Wins;
-    [HideInInspector] public GameObject[] waypoints;
+    [HideInInspector]
+    public GameObject m_Instance;
+    [HideInInspector]
+    public GameObject[] waypoints;
 
-
+    //referencais al movimiento y al canvas de la ia
     private IAMov m_Movement;
     private GameObject m_CanvasGameObject;
 
 
-    public void Setup()
+    public void Setup()//copiamos la lista de waypoints al control de movimiento y pintamos la nave 
     {
         m_Movement = m_Instance.GetComponent<IAMov>();
-        /* m_Shooting = m_Instance.GetComponent<TankShooting>();
-        m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas>().gameObject;
-
-        m_Movement.m_PlayerNumber = m_PlayerNumber;
-        m_Shooting.m_PlayerNumber = m_PlayerNumber;*/
         m_Movement.waypoints = waypoints;
-        m_ColoredPlayerText = "<color=#" + ColorUtility.ToHtmlStringRGB(m_PlayerColor) + ">PLAYER " + m_PlayerNumber + "</color>";
 
-        MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();
+        /*MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();
 
         for (int i = 0; i < renderers.Length; i++)
         {
             renderers[i].material.color = m_PlayerColor;
-        }
+        }*/
     }
 
 
-    public void DisableControl()
+    public void DisableControl()//desactivar movimiento
     {
-       /* m_Movement.enabled = false;
-        m_Shooting.enabled = false;*/
-
+        m_Movement.enabled = false;
         m_CanvasGameObject.SetActive(false);
     }
 
 
-    public void EnableControl()
+    public void EnableControl()//activar movimiento
     {
-       /* m_Movement.enabled = true;
-        m_Shooting.enabled = true;*/
-
+        m_Movement.enabled = true;
         m_CanvasGameObject.SetActive(true);
     }
 
 
-    public void Reset()
+    public void Reset()//reinicio de la nave
     {
         m_Instance.transform.position = m_SpawnPoint.position;
         m_Instance.transform.rotation = m_SpawnPoint.rotation;

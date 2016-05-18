@@ -16,20 +16,22 @@ public class ThrusterMan : MonoBehaviour {
 
 	void FixedUpdate () {
 
+        //Codigo del tutorial Hovercar
+
         RaycastHit hit;
 
         foreach (Transform thruster in thrusters)
         {
             Vector3 downwardForce;
             float distancePercentage;
-            Vector3 aux = thruster.up * -1;
-            Debug.DrawRay(thruster.position, aux, Color.green);
+            Vector3 aux = thruster.up * -1; //Vector que calcula la distancia con el suelo
+            //Debug.DrawRay(thruster.position, aux, Color.green);
             if (Physics.Raycast(thruster.position, thruster.up * -1, out hit, thrusterDistance))
             {
                 if (aux.magnitude >= 10)
                 {
                     GetComponentInParent<Transform>().rotation.eulerAngles.Set(0, 160, 0);
-                    Debug.DrawRay(thruster.position, aux, Color.red);
+                    //Debug.DrawRay(thruster.position, aux, Color.red);
                 }
 
                 // The thruster within thrusterDistance to the ground

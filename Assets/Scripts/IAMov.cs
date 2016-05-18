@@ -22,29 +22,28 @@ public class IAMov : MonoBehaviour {
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        wPos.Set(407f, 10f, 396f);
-        functionState = 0;
+        wPos.Set(407f, 10f, 396f); //Posicion inicial de la IA por si vuelca antes de pasar por el primer waypoint
+        functionState = 0; //Valor que decide si hay que acelerar o frenar
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        dot = Vector3.Dot(transform.up, Vector3.up); //Vector que calcula la distancia de la parte superior de la nave con el suelo
 
-                dot = Vector3.Dot(transform.up, Vector3.up);
-
-        if (dot < 0) volcado();
+        if (dot < 0) volcado(); //Comprobar si se ha volcado la nave al estar pegada al suelo con su aprte superior
 
         if (functionState == 0) Acce();
 
         if (functionState == 1) Slow();
 
-        if (wayPointIndex >= waypoints.Length) wayPointIndex = 0;
+        if (wayPointIndex >= waypoints.Length) wayPointIndex = 0; //Comprobacion de si ha pasado por el ultimo waypoint para resetear el contador
 
-        waypoint = waypoints[wayPointIndex];
+        waypoint = waypoints[wayPointIndex];//waypoint hacia el que debe dirigirse la nave
  
     }
 
-    void Acce()
+    void Acce() //Funcion para aumentar la velocidad
     {
 
         if (acceState == false)
@@ -53,9 +52,9 @@ public class IAMov : MonoBehaviour {
             slowState = false;
         }
 
-        if (waypoint)
+        if (waypoint) //si encuentra un waypoint
         {
-            if (smoothRotation)
+            if (smoothRotation) //rotacion de la nave hacia la dirección con el siguiente waypoint
             {
 
                 Quaternion rotation = Quaternion.LookRotation(waypoint.transform.position - transform.position);
@@ -65,11 +64,11 @@ public class IAMov : MonoBehaviour {
         currentSpeed = currentSpeed + accel * accel;
         transform.Translate(0, 0, Time.deltaTime * currentSpeed);
 
-        if (currentSpeed >= speedLimit) currentSpeed = speedLimit;
+        if (currentSpeed >= speedLimit) currentSpeed = speedLimit; //si la velocidad es mayor al limite, igualarlas
 
     }
 
-    void Slow()
+    void Slow() //Funcion para decelerar
     {
 
         if (slowState == false)
@@ -88,16 +87,16 @@ public class IAMov : MonoBehaviour {
         }
     }
 
-    public void volcado()
+    public void volcado() //Funcion para tratar el volcado de la nave
     {
         StartCoroutine(Example());
-        GetComponentInParent<Transform>().rotation = wRot;
+        GetComponentInParent<Transform>().rotation = wRot; 
         GetComponentInParent<Transform>().position = wPos;
     }
 
-    IEnumerator Example()
+    IEnumerator Example() //Retraso
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1.5f);
 
     }
 }

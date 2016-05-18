@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 
 
-public class LapCounter : MonoBehaviour {
+public class LapCounter : MonoBehaviour
+{
 
 
     public GameObject player;
@@ -17,35 +18,56 @@ public class LapCounter : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerMovement = player.GetComponent<NauMov>();
-        lap = 0;
+        lap = 1;
+        maxLaps = 3;
     }
     void FixedUpdate()
     {
-        lap = playerMovement.currentLap;
-        switch (lap) {
-           
-            case 2:
-                lapCounter.sprite = numbers[1];
-                break;
-            case 3:
-                lapCounter.sprite = numbers[2];
-                break;
+        if (player == null)//control si existe jugador
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            playerMovement = player.GetComponent<NauMov>();
+        }
+        else
+        {
 
-            default:
-                lapCounter.sprite = numbers[0];
-                break;
+            lap = playerMovement.currentLap;
+            switch (lap)//control de la imagen de la vuelta en la que estas
+            {
+
+                case 2:
+                    lapCounter.sprite = numbers[1];
+                    break;
+                case 3:
+                    lapCounter.sprite = numbers[2];
+                    break;
+
+                default:
+                    lapCounter.sprite = numbers[0];
+                    break;
+            }
+            switch (maxLaps)//control de la imagen de maximo numero de vueltas
+            {
+
+                case 2:
+                    maxLap.sprite = numbers[1];
+                    break;
+                case 3:
+                    maxLap.sprite = numbers[2];
+                    break;
+
+                default:
+                    maxLap.sprite = numbers[0];
+                    break;
+            }
         }
     }
     void OnTriggerEnter(Collider other)
     {
-       // Debug.Log("ultimo waypoint  " + playerMovement.lastWP);
-        if (other.gameObject.tag.Equals("Player"))
+        if (other.gameObject.tag.Equals("Player"))//control de vuelta
         {
-            if (lap == 0 && playerMovement.lastWP == 120) { playerMovement.currentLap = 1; }
-            if (lap == 1 && playerMovement.lastWP == 120) { playerMovement.currentLap = 2; }
-            if (lap == 2 && playerMovement.lastWP == 120) { playerMovement.currentLap = 3; }
+            if (lap == 1 && playerMovement.lastWP == 134) { playerMovement.currentLap = 2; }
+            if (lap == 2 && playerMovement.lastWP == 134) { playerMovement.currentLap = 3; }
         }
     }
 }

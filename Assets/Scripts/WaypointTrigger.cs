@@ -18,7 +18,7 @@ public class WaypointTrigger : MonoBehaviour {
         name = name.Remove(0, 8);
         int aux = int.Parse(name);
 
-        if (other.gameObject.tag.Equals("Enemy"))
+        if (other.gameObject.tag.Equals("Enemy")) //Cuando pase por alguno de estos waypoints, la IA decelerará, para evitar que vaya demasiado fuerte en las curvas
         {
             other.GetComponent<IAMov>().wayPointIndex = aux;
             switch (aux) {
@@ -163,20 +163,17 @@ public class WaypointTrigger : MonoBehaviour {
             }
         }
 
-        if (other.gameObject.tag.Equals("Player"))
+        if (other.gameObject.tag.Equals("Player")) //Define variables de waypoints usadas en el movimiento del jugador
         {
             if ((aux == other.GetComponent<NauMov>().lastWP+1) || (aux ==1 && other.GetComponent<NauMov>().lastWP == 134))
             {
-                other.GetComponent<NauMov>().wPos = GetComponentInParent<Transform>().position;
-                other.GetComponent<NauMov>().wPos.y = GetComponentInParent<Transform>().position.y + 1;
-                other.GetComponent<NauMov>().wRot = GetComponentInParent<Transform>().rotation;
-                other.GetComponent<NauMov>().wRot.y = GetComponentInParent<Transform>().rotation.y + 180f;
+                other.GetComponent<NauMov>().lastWaypoint = gameObject;
                 other.GetComponent<NauMov>().lastWP = aux;
             }
             
         }
 
-        if (other.gameObject.tag.Equals("Enemy"))
+        if (other.gameObject.tag.Equals("Enemy")) //Define variables para el IAMov con la itnención de rotar la nave si se vuelca.
         {
             if ((aux == other.GetComponent<IAMov>().lastWP + 1) || (aux == 1 && other.GetComponent<IAMov>().lastWP == 134))
             {
