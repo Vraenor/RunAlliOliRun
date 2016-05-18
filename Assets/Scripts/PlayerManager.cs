@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 ﻿﻿using UnityEngine;
+=======
+﻿using UnityEngine;
+>>>>>>> origin/master
 using System;
 using System.Collections;
 
 [Serializable]
+<<<<<<< HEAD
 public class PlayerManager
 {
 
@@ -23,6 +28,23 @@ public class PlayerManager
     private GameObject m_CanvasGameObject;
 
     public void Setup()//asignacion de variables de control
+=======
+public class PlayerManager {
+
+    public Color m_PlayerColor;
+    public Transform m_SpawnPoint;
+    [HideInInspector] public GameObject m_Instance;
+    [HideInInspector] public GameObject waypoint;
+    [HideInInspector] public int waypointNumber;
+    [HideInInspector] public int lapNumber = 1;
+
+
+
+    private NauMov m_Movement;
+    private GameObject m_CanvasGameObject;
+
+    public void Setup()
+>>>>>>> origin/master
     {
         m_Movement = m_Instance.GetComponent<NauMov>();
         m_Movement.lastWP = waypointNumber;
@@ -32,6 +54,7 @@ public class PlayerManager
 
         MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();
 
+<<<<<<< HEAD
         /* for (int i = 0; i < renderers.Length; i++)
          {
              renderers[i].material.color = m_PlayerColor;
@@ -40,6 +63,16 @@ public class PlayerManager
 
 
     public void DisableControl()//desactivado del movimiento
+=======
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material.color = m_PlayerColor;
+        }
+    }
+
+
+    public void DisableControl()
+>>>>>>> origin/master
     {
         m_Movement.enabled = false;
         m_CanvasGameObject.SetActive(false);
@@ -47,14 +80,24 @@ public class PlayerManager
     }
 
 
+<<<<<<< HEAD
     public void EnableControl()//activado del movimiento
     {
         m_Movement.enabled = true;
+=======
+    public void EnableControl()
+    {
+         m_Movement.enabled = true;
+>>>>>>> origin/master
         m_CanvasGameObject.SetActive(true);
     }
 
 
+<<<<<<< HEAD
     public void Reset()//reinicio de la nave
+=======
+    public void Reset()
+>>>>>>> origin/master
     {
         if (waypoint == null)
         {

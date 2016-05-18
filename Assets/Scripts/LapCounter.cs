@@ -18,12 +18,21 @@ public class LapCounter : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+<<<<<<< HEAD
+=======
+        /*player = GameObject.FindGameObjectWithTag("Player");
+        playerMovement = player.GetComponent<NauMov>();*/
+>>>>>>> origin/master
         lap = 1;
         maxLaps = 3;
     }
     void FixedUpdate()
     {
+<<<<<<< HEAD
         if (player == null)//control si existe jugador
+=======
+        if (player == null)
+>>>>>>> origin/master
         {
             player = GameObject.FindGameObjectWithTag("Player");
             playerMovement = player.GetComponent<NauMov>();
@@ -32,7 +41,11 @@ public class LapCounter : MonoBehaviour
         {
 
             lap = playerMovement.currentLap;
+<<<<<<< HEAD
             switch (lap)//control de la imagen de la vuelta en la que estas
+=======
+            switch (lap)
+>>>>>>> origin/master
             {
 
                 case 2:
@@ -46,7 +59,11 @@ public class LapCounter : MonoBehaviour
                     lapCounter.sprite = numbers[0];
                     break;
             }
+<<<<<<< HEAD
             switch (maxLaps)//control de la imagen de maximo numero de vueltas
+=======
+            switch (maxLaps)
+>>>>>>> origin/master
             {
 
                 case 2:
@@ -64,8 +81,14 @@ public class LapCounter : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+<<<<<<< HEAD
         if (other.gameObject.tag.Equals("Player"))//control de vuelta
         {
+=======
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            if (lap == 0 ) { playerMovement.currentLap = 1; }
+>>>>>>> origin/master
             if (lap == 1 && playerMovement.lastWP == 134) { playerMovement.currentLap = 2; }
             if (lap == 2 && playerMovement.lastWP == 134) { playerMovement.currentLap = 3; }
         }
