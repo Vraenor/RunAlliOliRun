@@ -15,6 +15,9 @@ public class DirectionArrow : MonoBehaviour {
 
     private void Awake()
     {
+        target = GameObject.Find("Waypoint1").transform;
+        transform.LookAt(target.position);
+        transform.Rotate(30f, 0f, 0f);
 
     }
 
@@ -29,9 +32,13 @@ public class DirectionArrow : MonoBehaviour {
         {
             cadena = nau.lastWaypoint.name.Remove(0, 8);
             numero = int.Parse(cadena) + 1;
+            Debug.Log(numero);
             aux = "Waypoint" + numero;
+            Debug.Log("\n"+ aux);
             target = GameObject.Find(aux).transform;
-            transform.LookAt(target.position, gameObject.transform.up);
+            transform.LookAt(target.position);
+            transform.Rotate(30f, 0f, 0f);
+
         }
     }
 }
