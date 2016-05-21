@@ -163,7 +163,7 @@ public class WaypointTrigger : MonoBehaviour {
             }
         }
 
-        if (other.gameObject.tag.Equals("Player")) //Define variables de waypoints usadas en el movimiento del jugador
+        if (other.gameObject.tag.Equals("Player")) //Define variables de waypoints usadas para encontrar el punto de respawn de la nave si vuelca
         {
             if ((aux == other.GetComponent<NauMov>().lastWP+1) || (aux ==1 && other.GetComponent<NauMov>().lastWP == 134))
             {
@@ -173,7 +173,7 @@ public class WaypointTrigger : MonoBehaviour {
             
         }
 
-        if (other.gameObject.tag.Equals("Enemy")) //Define variables para el IAMov con la itnención de rotar la nave si se vuelca.
+        if (other.gameObject.tag.Equals("Enemy")) //Define variables para el IAMov con la intención de rotar la nave si se vuelca.
         {
             if ((aux == other.GetComponent<IAMov>().lastWP + 1) || (aux == 1 && other.GetComponent<IAMov>().lastWP == 134))
             {

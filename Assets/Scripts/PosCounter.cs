@@ -15,7 +15,7 @@ public class PosCounter : MonoBehaviour {
     {
 
         player = GameObject.FindGameObjectWithTag("Player");
-        playerMovement = player.GetComponent<NauMov>();
+        //playerMovement = player.GetComponent<NauMov>();
         pos = 1;
     }
     void FixedUpdate()

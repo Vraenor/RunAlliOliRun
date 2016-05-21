@@ -22,7 +22,7 @@ public class NauMov : MonoBehaviour {
 
     new Rigidbody rigidbody;
 
-    float dot;
+    float dot, rot;
     public int currentPos;
     public int currentLap;
     public int lastWP;
