@@ -119,8 +119,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator RoundPlaying()
     {
         EnablePodControl();
-        while (m_LapNumber <= 3) { }
-        yield return null;
+        while (m_LapNumber < 4) {
+            yield return null;
+        }
     }
 
     //activar controles
@@ -139,7 +140,7 @@ public class GameManager : MonoBehaviour
     //fin de ronda
     private IEnumerator RoundEnding()
     {
-
+        DisablePodControl();
         yield return m_EndWait;
     }
     //mensaje de fin de partida

@@ -23,7 +23,6 @@ public class PlayerManager
 
     //Control del movimiento y del canavas
     private NauMov m_Movement;
-    private GameObject m_CanvasGameObject;
 
     public void Setup()//asignacion de variables de control
     {
@@ -33,9 +32,9 @@ public class PlayerManager
         m_Movement.currentLap = lapNumber;
 
 
-        MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();
+       /* MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();
 
-        /* for (int i = 0; i < renderers.Length; i++)
+         for (int i = 0; i < renderers.Length; i++)
          {
              renderers[i].material.color = m_PlayerColor;
          }*/
@@ -45,15 +44,12 @@ public class PlayerManager
     public void DisableControl()//desactivado del movimiento
     {
         m_Movement.enabled = false;
-        m_CanvasGameObject.SetActive(false);
-
     }
 
 
     public void EnableControl()//activado del movimiento
     {
         m_Movement.enabled = true;
-        m_CanvasGameObject.SetActive(true);
     }
 
 
@@ -70,7 +66,7 @@ public class PlayerManager
             m_Instance.transform.position = waypoint.transform.position;
             m_Instance.transform.rotation = waypoint.transform.rotation;
         }
-        m_Instance.SetActive(false);
-        m_Instance.SetActive(true);
+        //m_Instance.SetActive(false);
+        //m_Instance.SetActive(true);
     }
 }
