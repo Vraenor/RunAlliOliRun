@@ -28,11 +28,14 @@ public class NauMov : MonoBehaviour {
     public int lastWP;
     public GameObject lastWaypoint;
 
+    public GameObject city;
+
     private bool respawn = false;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        city = GameObject.FindGameObjectWithTag("City");
         currentLap = 1;
         currentPos = 1;
     }
@@ -86,6 +89,12 @@ public class NauMov : MonoBehaviour {
         turnTorque = turnTorque * Time.deltaTime * rigidbody.mass;
         rigidbody.AddTorque(turnTorque);
         EngineAudio(); //Llamada al audio
+
+        float distance = Vector3.Distance(this.transform.position, city.transform.position);
+
+        if (distance >= 150) city.SetActive(false);
+        else city.SetActive(true);
+
 	}
 
     public void EngineAudio() { //Audio dependiendo de si hay fuerza hacia delante o no

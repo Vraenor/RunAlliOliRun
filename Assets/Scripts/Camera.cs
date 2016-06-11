@@ -22,6 +22,7 @@ public class Camera : MonoBehaviour
 
         if (player != null)
         {
+            target = player.GetComponent<Transform>();
             // Calculate a new position to place the camera
             Vector3 newPosition = target.position + (target.forward * distanceBack);
             newPosition.y = Mathf.Max(newPosition.y + distanceUp, minimumHeight);
@@ -35,7 +36,6 @@ public class Camera : MonoBehaviour
         }
         else {
             player = GameObject.FindGameObjectWithTag("Player");
-            target = player.GetComponent<Transform>();
         }
 
 	}

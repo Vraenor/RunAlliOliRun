@@ -26,12 +26,12 @@ public class SpeedUI : MonoBehaviour
     {
         if (Player != null)//control si hay o no player
         {
+            PlayerMov = Player.GetComponent<NauMov>();
             CurrentSpeed = Mathf.Abs(PlayerMov.forwardForce.z);
             SetSpeedUI();
         }
         else {
             Player = GameObject.FindGameObjectWithTag("Player");
-            PlayerMov = Player.GetComponent<NauMov>();
         }
     }
 

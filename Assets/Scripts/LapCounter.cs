@@ -27,11 +27,11 @@ public class LapCounter : MonoBehaviour
         if (player == null)//control si existe jugador
         {
             player = GameObject.FindGameObjectWithTag("Player");
-            playerMovement = player.GetComponent<NauMov>();
+            
         }
         else
         {
-
+            playerMovement = player.GetComponent<NauMov>();
             lap = playerMovement.currentLap;
 
             switch (lap)//control de la imagen de la vuelta en la que estas

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     //Variables para el inicio o fin de partida
 
-    public float m_StartDelay = 5f;
+    public float m_StartDelay = 2f;
     public float m_EndDelay = 3f;
     private WaitForSeconds m_StartWait;
     private WaitForSeconds m_EndWait;
